@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notify page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="w3-container w3-red">
+    <h1> Online Top-Up </h1>
+	<p style="text-align:left;">
+    <p><i style='font-size:24px' class='fas'>&#xf015;</i> : <b><a href="{{ url_for('index') }}">Back to Home</a></b>
+    <span style="float:right;">
+        <b><a href="{{ url_for('login') }}"> Log Out </a></b>
+    </span>
+    </div>
+  <body>
+    <div class="container">
+      <br>
+      <h3><b> Please Insert Mobile Number </b></h3>
+      <form action="" method="post">
+        <input type="text" placeholder="MobileNo" name="MobileNo" value="{{
+          request.form.MobileNo }}">
+         <input type="text" placeholder="Amount Top-Up" name="amount" value="{{
+          request.form.amount }}">
+        <input class="btn btn-default" type="submit" value="Top-Up">
+      </form>
+      <br>
+      {% if mobile %}
+      <div style="text-align: center;">
+        <p> __________________________________________________________________________</p>
+        <p class="MobileNo"><strong> Mobile Number :</strong> {{ mobile }}
+      {% endif %}
+      {% if amount %}
+       <p class="MobileNo"><strong> Amount for Top-Up :</strong> {{ amount }}
+        <p class="td_date"><strong> Date :</strong> {{ td_date }}
+        <p class="td_time"><strong> Time :</strong> {{ td_time }}
+        <p class="success"><strong>*** Top-Up Successful ***</strong> {{ success }}
+        <p> __________________________________________________________________________</p>
+      </div>
+      {% endif %}
+      {% if notfound %}
+        <p class="error"><strong> Error :</strong><span style="color: red; "> {{ notfound }}</span></p>
+      {% endif %}
+    </div>
+  </body>
+</head>
+</html>
