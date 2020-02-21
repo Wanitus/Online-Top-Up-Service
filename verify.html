@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+  <head>
+    <title>Verify page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+    <div class="w3-container w3-red">
+    <h1> Online Top-Up </h1>
+	<p style="text-align:left;">
+    <p><i style='font-size:24px' class='fas'>&#xf015;</i> : <b><a href="{{ url_for('index') }}">Back to Home</a></b>
+    <span style="float:right;">
+        <b><a href="{{ url_for('login') }}"> Log Out </a></b>
+    </span>
+    </div>
+      <br>
+      <h3><b> Please Insert Mobile Number </b></h3>
+      <form action="" method="post">
+        <input type="text" placeholder="MobileNo" name="MobileNo" value="{{
+          request.form.MobileNo }}">
+        <input class="btn btn-default" type="submit" value="Verify">
+      </form>
+      <br>
+      {% if check %}
+        <p> ______________________________________________</p>
+        <p class="MobileNo"><strong> Mobile Number :</strong> {{ check }}
+        <p class="MobileNo"><strong> First Name    :</strong> {{ fname }}
+        <p class="MobileNo"><strong> Last Name     :</strong> {{ lname }}
+        <p> ______________________________________________</p>
+        <div style="text-align: left;">
+        <p><b><i style='font-size:24px'><a href="{{ url_for('notify') }}"> <span style="color: red; "> Click for Top-Up </span></a></i></b></p>
+        </div>
+      {% endif %}
+      {% if notfound %}
+        <p class="error"><strong> Error :</strong><span style="color: red; "> {{ notfound }}</span></p>
+      {% endif %}
+    </div>
+  </body>
+</html>
